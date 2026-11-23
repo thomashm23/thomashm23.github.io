@@ -4,35 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Holly Thomas</title>
+  <meta name="description" content="Holly Thomas: climate scientist working on climate model evaluation, the stratospheric polar vortex, and large-scale geospatial data analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Holly Thomas</h1>
-    <p>PhD Candidate</p>
+  <nav class="site-nav">
+    <a class="nav-name" href="#top">Holly Thomas</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero" id="top">
+    <canvas id="vortex" aria-hidden="true"></canvas>
+    <div class="hero-text">
+      <h1>Holly Thomas</h1>
+      <p class="tagline">Climate scientist · PhD Candidate, University of Arizona</p>
+      <p class="hero-sub">Climate model evaluation, the stratospheric polar vortex, and large-scale geospatial data.</p>
+    </div>
+    <a class="scroll-cue" href="#about" aria-label="Scroll to About">↓</a>
   </header>
 
   <main>
     <section id="about">
-      <h2>About Me</h2>
+      <h2>About</h2>
       <p>I'm a climate scientist specializing in climate model evaluation and large-scale geospatial data analysis. My PhD research at the University of Arizona examines why models disagree about the current and future states of the stratospheric polar vortex and how much that disagreement limits confidence in their projections of related climate phenomena, such as the 2021 Texas cold air outbreak.</p>
 
       <p>I build end-to-end Python pipelines (xarray, Dask, SciPy, Bash) for multi-model datasets, including CMIP6, CESM2 ensembles, and the ERA5, NCEP, MERRA-2, and JRA-55 reanalyses. My work centers on model validation, uncertainty quantification, and automated extreme event detection, with particular attention to how results depend on the reference dataset.</p>
 
       <p>I'm finishing my PhD in May 2027 and am looking for roles in climate risk, energy, consulting, or applied research where climate data informs real decisions. Open to relocation or remote work.</p>
+
+      <ul class="skills" aria-label="Tools and datasets">
+        <li>Python</li><li>xarray</li><li>Dask</li><li>SciPy</li><li>Bash</li>
+        <li>CMIP6</li><li>CESM2</li><li>ERA5</li><li>MERRA-2</li><li>JRA-55</li>
+      </ul>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Project One:</strong> A brief description of what you built.</li>
-        <li><strong>Project Two:</strong> Another highlight from your portfolio.</li>
-      </ul>
+    <section id="research">
+      <h2>Research &amp; Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Project One</h3>
+          <p>A brief description of what you built.</p>
+        </article>
+        <article class="card">
+          <h3>Project Two</h3>
+          <p>Another highlight from your portfolio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I'd be glad to hear about roles, collaborations, or questions about my work.</p>
+      <p><a class="button" href="mailto:hollythomas@arizona.edu">hollythomas@arizona.edu</a></p>
     </section>
   </main>
 
   <footer>
-    <p>Contact: <a href="mailto:hollythomas@arizona.edu">hollythomas@arizona.edu</a></p>
+    <p>© 2026 Holly Thomas</p>
   </footer>
+
+  <script src="vortex.js"></script>
 </body>
 </html>
