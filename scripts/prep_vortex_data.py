@@ -43,6 +43,20 @@ def parse_args():
     return p.parse_args()
 
 
+def standardize(da):
+    """Make old- and new-style (post-2024 CDS) ERA5 netCDF look the same.
+
+    New-style files call the time axis valid_time, add a length-1
+    pressure_level dimension, and carry extra coordinates (number, expver).
+    """
+    rename = {"valid_time": "time", "lat": "latitude", "lon": "longitude"}
+    da = da.rename({k: v for k, v in rename.items() if k in da.dims or k in da.coords})
+    for dim in list(da.dims):
+        if dim not in ("time", "latitude", "longitude"):
+            da = da.isel({dim: 0})
+    return da.reset_coords(drop=True)
+
+
 def load(var, folder, args):
     """Load one variable for the date range, north of lat_min, averaged to args.hours."""
     months = pd.period_range(args.start, args.end, freq="M")
@@ -54,7 +68,7 @@ def load(var, folder, args):
     pieces = []
     for f in files:
         with xr.open_dataset(f) as ds:
-            da = ds[var].sortby("latitude").sel(latitude=slice(args.lat_min - 1, 90))
+            da = standardize(ds[var]).sortby("latitude").sel(latitude=slice(args.lat_min - 1, 90))
             da = da.sel(time=slice(args.start, pd.Timestamp(args.end) + pd.Timedelta(hours=23)))
             if da.sizes["time"]:
                 pieces.append(da.resample(time=f"{args.hours}h").mean().load())
