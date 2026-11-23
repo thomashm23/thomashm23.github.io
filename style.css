@@ -6,6 +6,8 @@
   --muted: #9a9aa3;
   --accent: #8fd3ff;
   --max: 760px;
+  --font-head: "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -16,7 +18,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-weight: 300;
   font-size: 1.0625rem;
   line-height: 1.7;
@@ -27,6 +29,7 @@ a { color: var(--text); text-decoration-color: var(--muted); text-underline-offs
 a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 h1, h2, h3 { font-weight: 500; line-height: 1.2; margin: 0; }
+h1, h3, .site-nav .nav-name { font-family: var(--font-head); }
 
 /* Nav */
 .site-nav {
@@ -170,3 +173,7 @@ footer {
 @media (max-width: 520px) {
   .has-vortex-data .scroll-cue { display: none; }
 }
+
+.contact-links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.contact-links a { color: var(--muted); font-size: .95rem; }
+.contact-links a:hover { color: var(--accent); }
